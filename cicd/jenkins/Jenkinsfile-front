@@ -16,7 +16,6 @@ pipeline {
 
         stage('2. Build Frontend App') {
             steps {
-                // 프론트엔드 코드가 있는 miming 폴더로 이동하여 빌드
                 dir('miming') {
                     sh 'npm install'
                     sh 'npm run build'
@@ -27,7 +26,6 @@ pipeline {
         stage('3. Build & Push Docker Image') {
             steps {
                 dir('miming') {
-                    // latest 태그를 빼고 지정하신 버전(0.X)으로만 생성
                     sh "docker build -t ${IMAGE_NAME}:${TAG} ."
 
                     sh "echo \$DOCKER_CREDS_PSW | docker login -u \$DOCKER_CREDS_USR --password-stdin"
