@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mariadb-service
+  name: backend-service
 spec:
   selector:
-    type: db
+    app: backend
   ports:
     - protocol: TCP
-      port: 3306
-      targetPort: 3306
+      port: 8080
+      targetPort: 8080
