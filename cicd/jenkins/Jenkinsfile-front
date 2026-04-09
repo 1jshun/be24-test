@@ -4,14 +4,12 @@ pipeline {
     environment {
         DOCKER_CREDS = credentials('dockerhub-creds')
         IMAGE_NAME = 'nahune/mimingfront'
-        // latest 대신 0.1, 0.2 형식으로 버전 자동 증가
         TAG = "0.${env.BUILD_NUMBER}"
     }
 
     stages {
         stage('1. Checkout Code') {
             steps {
-                // 알려주신 깃허브 주소 적용
                 git branch: 'main', url: 'https://github.com/1jshun/be24-test.git'
             }
         }
